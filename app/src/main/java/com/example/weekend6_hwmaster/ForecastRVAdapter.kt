@@ -1,17 +1,15 @@
 package com.example.weekend6_hwmaster
 
-import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.annotation.NonNull
 import androidx.recyclerview.widget.RecyclerView
-import com.example.weekend6_hwmaster.forecastweatherobject.ForecastObject
 import com.example.weekend6_hwmaster.forecastweatherobject.X
+import java.text.SimpleDateFormat
+import java.util.*
 
 class ForecastRVAdapter(val listWeather: List<X>) : RecyclerView.Adapter<ForecastRVAdapter.ViewHolder>() {
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ForecastRVAdapter.ViewHolder {
         return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.forecast_item, parent, false))
@@ -60,7 +58,11 @@ class ForecastRVAdapter(val listWeather: List<X>) : RecyclerView.Adapter<Forecas
             holder.tvEqualTemp.setBackgroundResource(R.color.neutral)
         }
 
-        holder.tvDay.text = "Date/Time: " + listWeather.get(position).dt_txt
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+        val date: Date = dateFormat.parse(listWeather.get(position).dt_txt)
+        val newDateFormat = SimpleDateFormat("E, MMMM dd hh:mma")
+        holder.tvDay.text = newDateFormat.format(date)
+
 
         if (celsiusToFahrenheit(kelvinToCelsius(listWeather.get(position).main.temp_min.toFloat())) == celsiusToFahrenheit(
                 kelvinToCelsius(listWeather.get(position).main.temp_max.toFloat()))) {
