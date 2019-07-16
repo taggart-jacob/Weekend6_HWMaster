@@ -7,4 +7,6 @@
     <color name="cold_blue">#0118EE</color>
     <color name="color_warm">#E77C0B</color>
     <color name="color_hot">#EB3B0F</color>
+    <color name="neutral">#9506FA2B</color>
+    <color name="background">#8AC0B0</color>
 </resources>

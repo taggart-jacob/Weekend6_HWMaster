@@ -44,26 +44,23 @@ class MainActivity : AppCompatActivity() {
                 .enqueue(
                     object : Callback<WeatherObject> {
                         override fun onFailure(call: Call<WeatherObject>, t: Throwable) {
-                            Log.d("TAG", "FUCKED UP")
+                            Log.d("TAG", t.message)
                         }
 
                         override fun onResponse(call: Call<WeatherObject>, response: Response<WeatherObject>) {
                             val weatherResponse = response.body()
-                            Log.d("TAG", weatherResponse?.main?.temp.toString())
                             val kelvin = weatherResponse?.main?.temp
                             val celsius: Int? = kelvinToCelsius(kelvin!!).toInt()
-                            Log.d("TAG", celsius.toString())
                             val farenheit: Int? = celsiusToFahrenheit(celsius!!)
-                            Log.d("TAG", farenheit.toString())
                             tvCurrentTemp.text = farenheit.toString() + "º"
                             if (farenheit!! >= 80) {
-                                layout.setBackgroundColor(resources.getColor(R.color.color_hot))
+                                layout.setBackgroundResource(R.color.color_hot)
                             } else if ((80 > farenheit) && (farenheit >= 60)) {
-                                layout.setBackgroundColor(resources.getColor(R.color.color_warm))
+                                layout.setBackgroundResource(R.color.color_warm)
                             } else if ((60 > farenheit) && (farenheit >= 40)) {
-                                layout.setBackgroundColor(resources.getColor(R.color.cool_blue))
+                                layout.setBackgroundResource(R.color.cool_blue)
                             } else {
-                                layout.setBackgroundColor(resources.getColor(R.color.cold_blue))
+                                layout.setBackgroundResource(R.color.cold_blue)
                             }
                             if (weatherResponse.clouds!!.all !!<= 35){
                                 imgCondition.setImageResource(R.mipmap.ic_sunny_round)
@@ -85,7 +82,6 @@ class MainActivity : AppCompatActivity() {
 
                     override fun onResponse(call: Call<ForecastObject>, response: Response<ForecastObject>) {
                         val forecastResponse = response.body()
-                        Log.d("TAG", forecastResponse?.city.toString())
                         tvCity.text = forecastResponse?.city?.name
                         populateRVForecast(forecastResponse!!)
                     }

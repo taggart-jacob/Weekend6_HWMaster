@@ -9,10 +9,13 @@
 
     <TextView
             android:id="@+id/tvCity"
-            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:textSize="50dp"
-    app:layout_constraintTop_toTopOf="parent"/>
+            android:textSize="65dp"
+            android:background="@color/background"
+            app:layout_constraintTop_toTopOf="parent"/>
+
     <LinearLayout
             android:id="@+id/layoutCurrentTemp"
             android:layout_width="match_parent"
@@ -29,25 +32,22 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
-                android:layout_margin="10dp"
-        />
-        
+                android:layout_margin="10dp"/>
+
         <TextView
                 android:id="@+id/tvCurrentTemperature"
                 android:layout_width="wrap_content"
                 android:textSize="100sp"
                 android:layout_margin="10dp"
                 android:layout_gravity="center"
-                android:layout_height="wrap_content"
-        />
-
+                android:layout_height="wrap_content"/>
     </LinearLayout>
 
     <EditText
             android:id="@+id/etZip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Gimme That ZIP:"
+            android:hint="Enter Your ZIP Code:"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -65,14 +65,11 @@
             android:onClick="onClick"
             android:visibility="invisible"/>
 
-
     <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvForecast"
             android:layout_width="match_parent"
-            android:layout_height="450dp"
-            app:layout_constraintTop_toBottomOf = "@id/layoutCurrentTemp"
+            android:layout_height="420dp"
+            app:layout_constraintTop_toBottomOf="@id/layoutCurrentTemp"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"/>
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
