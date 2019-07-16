@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity() {
                                 layout.setBackgroundResource(R.color.cold_blue)
                             }
                             if (weatherResponse.clouds!!.all !!<= 35){
-                                imgCondition.setImageResource(R.mipmap.ic_sunny_round)
+                                imgCondition.setImageResource(R.drawable.sunny)
                             } else if((weatherResponse.clouds!!.all !! > 35) && (weatherResponse.clouds!!.all !!<65)){
                                 imgCondition.setImageResource(R.drawable.partlycloudy)
                             } else{
