@@ -32,7 +32,7 @@ class ForecastRVAdapter(val listWeather: List<X>): RecyclerView.Adapter<Forecast
     }
 
     fun celsiusToFahrenheit(celsius: Int): Int {
-        return (9 / 5 * celsius + 32)
+        return ((celsius * 9.0f / 5.0f) + 32.0f).toInt()
     }
 
     fun kelvinToCelsius(kelvin: Float): Int {
